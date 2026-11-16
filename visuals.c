@@ -58,16 +58,13 @@ int Visualizacion_y_Audio(int **A) {
 
     SDL_Texture *spr_girasol = cargarImagen(render, "Imágenes/girasol.jpg");
     SDL_Texture *spr_lanzag = cargarImagen(render, "Imágenes/lanzag.jpg");
-    SDL_Texture *spr_nuez = cargarImagen(render, "Imágenes/nuez.jpg");
-    SDL_Texture *spr_zombie = cargarImagen(render, "Imágenes/zombie.jpg");
+    SDL_Texture *spr_nuez = cargarImagen(render, "Imágenes/nuez.png");
+    SDL_Texture *spr_zombie = cargarImagen(render, "Imágenes/zombie.png");
     SDL_Texture *spr_jugador = cargarImagen(render, "Imágenes/jugador.png");
     SDL_Texture *spr_guisante = cargarImagen(render, "Imágenes/guisante.jpg");
     SDL_Texture *spr_prev_girasol = cargarImagen(render, "Imágenes/p_girasol.png");
     SDL_Texture *spr_prev_lanzag = cargarImagen(render, "Imágenes/p_lanzag.png");
-    SDL_Texture *spr_prev_nuez = cargarImagen(render, "Imágenes/p_nuez.jpg");
-
-
-    
+    SDL_Texture *spr_prev_nuez = cargarImagen(render, "Imágenes/p_nuez.png");
 
     if(!spr_girasol || !spr_lanzag || !spr_nuez || !spr_zombie || !spr_jugador || !spr_guisante || !spr_prev_girasol || !spr_prev_lanzag || !spr_prev_nuez) {
         SDL_DestroyRenderer(render);
@@ -139,6 +136,7 @@ int Visualizacion_y_Audio(int **A) {
             }
 
             SDL_FRect rJugador = {pos_x * TAM_PIX, pos_y * TAM_PIX, TAM_PIX, TAM_PIX};
+            // Al presionar Z, X, o C, podemos previsualizar qué planta podemos colocar en la casilla seleccionada
             if(event.type == SDL_EVENT_KEY_DOWN && !event.key.repeat) {
                 if(event.key.scancode == SDL_SCANCODE_Z) {
                     if(planta_prev != 1)
@@ -187,9 +185,5 @@ int Visualizacion_y_Audio(int **A) {
     SDL_DestroyRenderer(render);
     SDL_DestroyWindow(window);
     SDL_Quit();
-    for(int i = 0; i < 8; i++) {
-        free(A[i]);
-    }
-    free(A);
     return 0;
 }
