@@ -56,12 +56,12 @@ int Visualizacion_y_Audio(int **A) {
         return 1;
     }
 
-    SDL_Texture *spr_girasol = cargarImagen(render, "Imágenes/girasol.jpg");
-    SDL_Texture *spr_lanzag = cargarImagen(render, "Imágenes/lanzag.jpg");
+    SDL_Texture *spr_girasol = cargarImagen(render, "Imágenes/girasol.png");
+    SDL_Texture *spr_lanzag = cargarImagen(render, "Imágenes/lanzag.png");
     SDL_Texture *spr_nuez = cargarImagen(render, "Imágenes/nuez.png");
     SDL_Texture *spr_zombie = cargarImagen(render, "Imágenes/zombie.png");
     SDL_Texture *spr_jugador = cargarImagen(render, "Imágenes/jugador.png");
-    SDL_Texture *spr_guisante = cargarImagen(render, "Imágenes/guisante.jpg");
+    SDL_Texture *spr_guisante = cargarImagen(render, "Imágenes/guisante.png");
     SDL_Texture *spr_prev_girasol = cargarImagen(render, "Imágenes/p_girasol.png");
     SDL_Texture *spr_prev_lanzag = cargarImagen(render, "Imágenes/p_lanzag.png");
     SDL_Texture *spr_prev_nuez = cargarImagen(render, "Imágenes/p_nuez.png");
@@ -108,7 +108,7 @@ int Visualizacion_y_Audio(int **A) {
                 estado = 0;
             movimientos(event, &pos_x, &pos_y);
 
-            SDL_SetRenderDrawColor(render, 35, 80, 20, 255);
+            SDL_SetRenderDrawColor(render, 50, 120, 40, 255);
             SDL_RenderClear(render);
             for(int i = 0; i < 5; i++) {
                 for(int j = 0; j < 8; j++) {
