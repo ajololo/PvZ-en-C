@@ -1,4 +1,3 @@
-#include "logica.h"
 #include "visuals.h"
 
 
@@ -11,7 +10,7 @@ int main() {
     for(int i = 0; i < 5; i++) {
         Jardin[i][0] = 1;
         Jardin[i][1] = 2;
-        Jardin[i][3] = 5;
+        Jardin[i][3] = 3;
         Jardin[i][7] = 10;
     }
 

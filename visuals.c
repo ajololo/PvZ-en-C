@@ -1,12 +1,4 @@
-#include <stdlib.h>
-#include <SDL3/SDL.h>
-#include <SDL3/SDL_main.h>
-#include <SDL3_image/SDL_image.h>
-#include <SDL3/SDL_audio.h>
-#include "logica.h"
 #include "visuals.h"
-
-#define TAM_PIX 128
 
 SDL_Texture *cargarImagen(SDL_Renderer *render, char *nombre_archivo) {
     SDL_Texture *sprite = IMG_LoadTexture(render, nombre_archivo);
@@ -30,7 +22,7 @@ void movimientos(SDL_Event event, int *x, int *y) {
         else if(event.key.scancode == SDL_SCANCODE_LEFT)
             Npos_x--;
         
-        if(Npos_x >= 0 && Npos_x < 8 && Npos_y >= 0 && Npos_y < 5) {
+        if(Npos_x >= 0 && Npos_x < COLUMNAS && Npos_y >= 0 && Npos_y < FILAS) {
             *x = Npos_x;
             *y = Npos_y;
         }
@@ -50,7 +42,7 @@ int Visualizacion_y_Audio(int **A) {
         return 1;
     }
 
-    if(!SDL_CreateWindowAndRenderer("Jardín", 8 * TAM_PIX, 5 * TAM_PIX, 0, &window, &render)) {
+    if(!SDL_CreateWindowAndRenderer("Jardín", COLUMNAS * TAM_PIX, FILAS * TAM_PIX, 0, &window, &render)) {
         SDL_Log("Error: %s", SDL_GetError());
         SDL_Quit();
         return 1;
@@ -108,10 +100,10 @@ int Visualizacion_y_Audio(int **A) {
                 estado = 0;
             movimientos(event, &pos_x, &pos_y);
 
-            SDL_SetRenderDrawColor(render, 50, 120, 40, 255);
+            SDL_SetRenderDrawColor(render, 20, 100, 30, 255);
             SDL_RenderClear(render);
-            for(int i = 0; i < 5; i++) {
-                for(int j = 0; j < 8; j++) {
+            for(int i = 0; i < FILAS; i++) {
+                for(int j = 0; j < COLUMNAS; j++) {
                     if(A[i][j] == 1) {
                         SDL_FRect rGirasol = {j * TAM_PIX, i * TAM_PIX, TAM_PIX, TAM_PIX};
                         SDL_RenderTexture(render, spr_girasol, NULL, &rGirasol);
@@ -120,7 +112,7 @@ int Visualizacion_y_Audio(int **A) {
                         SDL_FRect rLanzag = {j * TAM_PIX, i * TAM_PIX, TAM_PIX, TAM_PIX};
                         SDL_RenderTexture(render, spr_lanzag, NULL, &rLanzag);
                     }
-                    else if(A[i][j] == 2) {
+                    else if(A[i][j] == 3) {
                         SDL_FRect rNuez = {j * TAM_PIX, i * TAM_PIX, TAM_PIX, TAM_PIX};
                         SDL_RenderTexture(render, spr_nuez, NULL, &rNuez);
                     }
@@ -136,6 +128,7 @@ int Visualizacion_y_Audio(int **A) {
             }
 
             SDL_FRect rJugador = {pos_x * TAM_PIX, pos_y * TAM_PIX, TAM_PIX, TAM_PIX};
+
             // Al presionar Z, X, o C, podemos previsualizar qué planta podemos colocar en la casilla seleccionada
             if(event.type == SDL_EVENT_KEY_DOWN && !event.key.repeat) {
                 if(event.key.scancode == SDL_SCANCODE_Z) {
