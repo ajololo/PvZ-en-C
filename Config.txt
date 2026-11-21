@@ -1,0 +1,44 @@
+#CONFIG
+
+#GENERAL
+oleadas_max = 5
+
+
+# VIDA Y RESISTENCIA
+vida_casa = 3 
+
+vida_zombie = 5
+vida_Flag_zombie = 5
+
+vida_girasol = 1
+vida_lanzaguisantes = 1
+vida_nuez = 8
+
+
+# ECONOMIA
+soles_iniciales = 150
+
+costo_girasol = 50
+costo_lanzaguisantes = 100
+costo_nuez = 150
+costo_pimenton = 250
+
+soles_por_girasol = 25
+soles_por_generacion = 25
+
+
+# FRECUENCIAS Y VELOCIDADES
+
+frecuencia_soles_base = 20
+frecuencia_soles_girasol = 10
+frecuencia_disparo = 2
+frecuencia_generacion_zombie = 3
+
+velocidad_zombie = 4
+velocidad_flag_zombie = 6
+
+
+# TIEMPOS
+
+tiempo_preparacion = 10
+tiempo_descanso = 5
