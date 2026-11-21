@@ -1,5 +1,6 @@
 #include "Tarea1.h"
 #include "Tarea2.h"
+#include "visuals.h"
 
 int main(int argc, char **argv) {
 
