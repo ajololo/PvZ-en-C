@@ -28,25 +28,7 @@ int main(int argc, char **argv) {
     }
     inicializar_vidas(&mapa, &config);
     inicializar_estado_juego(&estado, &config);
-    //mostrar algunos datos de la configuraciónen la consola
-    printf("configuracion cargada correctamente:\n");
-    printf("oleadas: %d\n", config.oleadas_max);
-    printf("vida de la casa: %d\n", config.vida_casa);
-    printf("vida del zombie: %d\n", config.vida_zombie);
-    printf("costo del girasol: %d\n", config.costo_girasol);
 
-    //mostrar las dimensiones del mapa en la consola
-    printf("\nMapa cargado correctamente:\n");
-    printf("Filas: %d\n", mapa.filas);
-    printf("Columnas: %d\n", mapa.columnas);
-
-    //mostrar el contenido de la matriz en la consola
-    for (int i = 0; i < mapa.filas; i++) {
-        for (int j = 0; j < mapa.columnas; j++) {
-            printf("%d ", mapa.celdas[i][j]);
-        }
-        printf("\n");
-    }
 while (estado.fase != TERMINADO) {
     actualizar_juego(&mapa, &config, &estado, &soles, &vida_casa);
 }
