@@ -17,4 +17,18 @@ void movimientos(SDL_Event, int*, int*);
 
 int Visualizacion_y_Audio(int **);
 
+int menu();
+
+enum matriz {
+    PASTO = 0,
+    GIRASOL = 1,
+    LANZAG = 2,
+    NUEZ = 3,
+    PIMENTON = 4,
+    GUISANTE = 5,
+    ZOMBIE = 10,
+    FLAG_ZOMBIE = 11,
+    SOL = 20
+};
+
 #endif
