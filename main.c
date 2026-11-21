@@ -3,6 +3,11 @@
 #include "visuals.h"
 
 int main(int argc, char **argv) {
+    int ini_juego = menu();
+    if(ini_juego == 1)
+        return EXIT_FAILURE;
+    else if(ini_juego == 2)
+        return EXIT_SUCCESS;
 
     // Comprobar que se recibieron los dos nombres de archivo
     if (argc != 3) {
@@ -31,6 +36,7 @@ int main(int argc, char **argv) {
     inicializar_estado_juego(&estado, &config);
 
 while (estado.fase != TERMINADO) {
+    
     actualizar_juego(&mapa, &config, &estado, &soles, &vida_casa);
 }
 
